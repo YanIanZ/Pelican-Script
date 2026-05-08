@@ -119,38 +119,8 @@ configure() {
   [ "$ASSUME_SSL" == true ] && app_url="https://$FQDN"
   [ "$CONFIGURE_LETSENCRYPT" == true ] && app_url="https://$FQDN"
 
-  # Generate encryption key
-  php artisan key:generate --force
-
-  # Fill in environment:setup automatically
-  php artisan p:environment:setup \
-    --url="$app_url" \
-    --cache="redis" \
-    --session="redis" \
-    --queue="redis" \
-    --redis-host="127.0.0.1" \
-    --redis-pass="null" \
-    --redis-port="6379" \
-    --settings-ui=true
-
-  # Fill in environment:database credentials automatically
-  php artisan p:environment:database \
-    --driver="mysql" \
-    --host="127.0.0.1" \
-    --port="3306" \
-    --database="$MYSQL_DB" \
-    --username="$MYSQL_USER" \
-    --password="$MYSQL_PASSWORD"
-
-  # configures database
-  php artisan migrate --seed --force
-
-  # Create user account
-  php artisan p:user:make \
-    --email="$user_email" \
-    --username="$user_username" \
-    --password="$user_password" \
-    --admin=1
+  # Generate .env file and APP_KEY automatically
+  php artisan p:environment:setup
 
   success "Configured environment!"
 }
