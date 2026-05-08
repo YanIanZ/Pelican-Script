@@ -26,17 +26,13 @@ List of supported installation setups for panel and Wings (installations support
 
 | Operating System | Version | Supported          | PHP Version |
 | ---------------- | ------- | ------------------ | ----------- |
-| Ubuntu           | 18.04   | :red_circle: \*    | 8.1         |
-|                  | 20.04   | :white_check_mark: | 8.3         |
+| Ubuntu           | 20.04   | :white_check_mark: | 8.3         |
 |                  | 22.04   | :white_check_mark: | 8.3         |
 |                  | 24.04   | :white_check_mark: | 8.3         |
-| Debian           | 10      | :red_circle: \*    | 8.1         |
-|                  | 11      | :white_check_mark: | 8.3         |
+| Debian           | 11      | :white_check_mark: | 8.3         |
 |                  | 12      | :white_check_mark: | 8.3         |
 | Rocky Linux      | 9       | :white_check_mark: | 8.3         |
 | AlmaLinux        | 9       | :white_check_mark: | 8.3         |
-
-_\* Indicates an operating system and release that previously was supported by this script._
 
 ## Using the installation scripts
 
@@ -90,7 +86,7 @@ In `install.sh` github source and script release variables should change every r
 
 ## Contributors ✨
 
-Copyright (C) 2018 - 2024, Vilhelm Prytz, <vilhelm@prytznet.se>, and contributors!
+Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>, and contributors!
 
 - Created by [Vilhelm Prytz](https://github.com/vilhelmprytz)
 - Maintained by [Linux123123](https://github.com/Linux123123)

@@ -6,7 +6,7 @@ set -e
 #                                                                                    #
 # Project 'pelican-installer'                                                        #
 #                                                                                    #
-# Copyright (C) 2018 - 2024, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
+# Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
 #                                                                                    #
 #   This program is free software: you can redistribute it and/or modify             #
 #   it under the terms of the GNU General Public License as published by             #
@@ -148,8 +148,8 @@ get_latest_release() {
 
 get_latest_versions() {
   output "Retrieving release information..."
-  PELICAN_PANEL_VERSION=$(get_latest_release "pelican/panel")
-  PELICAN_WINGS_VERSION=$(get_latest_release "pelican/wings")
+  PELICAN_PANEL_VERSION=$(get_latest_release "pelican-dev/panel")
+  PELICAN_WINGS_VERSION=$(get_latest_release "pelican-dev/wings")
 }
 
 update_lib_source() {
@@ -530,16 +530,15 @@ case "$OS" in
 ubuntu)
   [ "$OS_VER_MAJOR" == "20" ] && SUPPORTED=true
   [ "$OS_VER_MAJOR" == "22" ] && SUPPORTED=true
+  [ "$OS_VER_MAJOR" == "24" ] && SUPPORTED=true
   export DEBIAN_FRONTEND=noninteractive
   ;;
 debian)
-  [ "$OS_VER_MAJOR" == "10" ] && SUPPORTED=true
   [ "$OS_VER_MAJOR" == "11" ] && SUPPORTED=true
   [ "$OS_VER_MAJOR" == "12" ] && SUPPORTED=true
   export DEBIAN_FRONTEND=noninteractive
   ;;
 rocky | almalinux)
-  [ "$OS_VER_MAJOR" == "8" ] && SUPPORTED=true
   [ "$OS_VER_MAJOR" == "9" ] && SUPPORTED=true
   ;;
 *)

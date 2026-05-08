@@ -2,6 +2,22 @@
 
 This project follows the [semantic versioning](https://semver.org) convention. Changelog points should be divided into fixed, changed, or added.
 
+## v2.0.0 (released on 2025-05-08)
+
+### Added
+
+- panel/wings: Add support for Ubuntu 24.04 (Noble Numbat).
+
+### Changed
+
+- lib: Update GitHub API calls to use correct `pelican-dev` organization name.
+- lib: Remove deprecated Debian 10 (Buster) support.
+- lib: Remove deprecated AlmaLinux 8 and Rocky Linux 8 support.
+- uninstall: Replace legacy `centos` references with `rocky | almalinux` case statements.
+- Vagrantfile: Add `ubuntu_noble` VM, remove deprecated `debian_buster`, `rockylinux_8`, and `almalinux_8` VMs.
+- Update copyright year to 2025 across all scripts.
+- Bump script version to v2.0.0.
+
 ## v1.0.0 (released on 2023-07-31)
 
 ### Added

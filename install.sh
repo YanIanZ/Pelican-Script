@@ -6,7 +6,7 @@ set -e
 #                                                                                    #
 # Project 'pelican-installer'                                                        #
 #                                                                                    #
-# Copyright (C) 2018 - 2024, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
+# Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
 #                                                                                    #
 #   This program is free software: you can redistribute it and/or modify             #
 #   it under the terms of the GNU General Public License as published by             #
@@ -28,8 +28,8 @@ set -e
 #                                                                                    #
 ######################################################################################
 
-export GITHUB_SOURCE="v1.0.0"
-export SCRIPT_RELEASE="v1.0.0"
+export GITHUB_SOURCE="v2.0.0"
+export SCRIPT_RELEASE="v2.0.0"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/AnthonySSC/pelican-installer"
 
 LOG_PATH="/var/log/pelican-installer.log"

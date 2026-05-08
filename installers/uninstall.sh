@@ -6,7 +6,7 @@ set -e
 #                                                                                    #
 # Project 'pelican-installer'                                                        #
 #                                                                                    #
-# Copyright (C) 2018 - 2024, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
+# Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
 #                                                                                    #
 #   This program is free software: you can redistribute it and/or modify             #
 #   it under the terms of the GNU General Public License as published by             #
@@ -46,10 +46,16 @@ RM_WINGS="${RM_WINGS:-true}"
 rm_panel_files() {
   output "Removing panel files..."
   rm -rf /var/www/pelican /usr/local/bin/composer
-  [ "$OS" != "centos" ] && unlink /etc/nginx/sites-enabled/pelican.conf
-  [ "$OS" != "centos" ] && rm -f /etc/nginx/sites-available/pelican.conf
-  [ "$OS" != "centos" ] && ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-  [ "$OS" == "centos" ] && rm -f /etc/nginx/conf.d/pelican.conf
+  case "$OS" in
+  debian | ubuntu)
+    unlink /etc/nginx/sites-enabled/pelican.conf
+    rm -f /etc/nginx/sites-available/pelican.conf
+    ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+    ;;
+  rocky | almalinux)
+    rm -f /etc/nginx/conf.d/pelican.conf
+    ;;
+  esac
   systemctl restart nginx
   success "Removed panel files."
 }
@@ -81,7 +87,7 @@ rm_services() {
   debian | ubuntu)
     systemctl disable --now redis-server
     ;;
-  centos)
+  rocky | almalinux)
     systemctl disable --now redis
     systemctl disable --now php-fpm
     rm -rf /etc/php-fpm.d/www-pelican.conf
