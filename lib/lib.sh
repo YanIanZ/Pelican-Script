@@ -21,10 +21,10 @@ set -e
 #   You should have received a copy of the GNU General Public License                #
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.           #
 #                                                                                    #
-# https://github.com/AnthonySSC/pelican-installer/blob/main/LICENSE                  #
+# https://github.com/YanIanZ/Pelican-Script/blob/main/LICENSE                  #
 #                                                                                    #
 # This script is not associated with the official Pelican Project.                   #
-# https://github.com/AnthonySSC/pelican-installer                                    #
+# https://github.com/YanIanZ/Pelican-Script                                    #
 #                                                                                    #
 ######################################################################################
 
@@ -52,7 +52,7 @@ export SUPPORTED=false
 export PANEL_DL_URL="https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz"
 export WINGS_DL_BASE_URL="https://github.com/pelican-dev/wings/releases/latest/download/wings_linux_"
 export MARIADB_URL="https://downloads.mariadb.com/MariaDB/mariadb_repo_setup"
-export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/AnthonySSC/pelican-installer"}
+export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/YanIanZ/Pelican-Script"}
 export GITHUB_URL="$GITHUB_BASE_URL/$GITHUB_SOURCE"
 
 # Colors
@@ -125,7 +125,7 @@ welcome() {
   output "Pelican panel installation script @ $SCRIPT_RELEASE"
   output ""
   output "Copyright (C) 2018 - 2024, Vilhelm Prytz, <vilhelm@prytznet.se>"
-  output "https://github.com/AnthonySSC/pelican-installer"
+  output "https://github.com/YanIanZ/Pelican-Script"
   output ""
   output "This script is not associated with the official Pelican Project."
   output ""

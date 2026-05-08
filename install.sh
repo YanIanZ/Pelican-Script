@@ -21,16 +21,16 @@ set -e
 #   You should have received a copy of the GNU General Public License                #
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.           #
 #                                                                                    #
-# https://github.com/AnthonySSC/pelican-installer/blob/main/LICENSE                  #
+# https://github.com/YanIanZ/Pelican-Script/blob/main/LICENSE                  #
 #                                                                                    #
 # This script is not associated with the official Pelican Project.                   #
-# https://github.com/AnthonySSC/pelican-installer                                    #
+# https://github.com/YanIanZ/Pelican-Script                                    #
 #                                                                                    #
 ######################################################################################
 
 export GITHUB_SOURCE="v2.0.0"
 export SCRIPT_RELEASE="v2.0.0"
-export GITHUB_BASE_URL="https://raw.githubusercontent.com/AnthonySSC/pelican-installer"
+export GITHUB_BASE_URL="https://raw.githubusercontent.com/YanIanZ/Pelican-Script"
 
 LOG_PATH="/var/log/pelican-installer.log"
 
