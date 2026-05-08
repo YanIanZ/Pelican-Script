@@ -28,7 +28,7 @@ set -e
 #                                                                                    #
 ######################################################################################
 
-export GITHUB_SOURCE="v2.0.0"
+export GITHUB_SOURCE="main"
 export SCRIPT_RELEASE="v2.0.0"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/YanIanZ/Pelican-Script"
 
