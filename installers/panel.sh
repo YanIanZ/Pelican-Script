@@ -167,10 +167,10 @@ set_folder_permissions() {
   # if os is ubuntu or debian, we do this
   case "$OS" in
   debian | ubuntu)
-    chown -R www-data:www-data ./*
+    chown -R www-data:www-data /var/www/pelican
     ;;
   rocky | almalinux)
-    chown -R nginx:nginx ./*
+    chown -R nginx:nginx /var/www/pelican
     ;;
   esac
 }
