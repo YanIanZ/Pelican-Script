@@ -127,18 +127,27 @@ configure() {
   sed -i "s/APP_INSTALLED=false/APP_INSTALLED=true/g" .env
   sed -i "s/APP_ENV=local/APP_ENV=production/g" .env
   
-  # Configure Database
-  sed -i "s/DB_HOST=.*/DB_HOST=127.0.0.1/g" .env
-  sed -i "s/DB_PORT=.*/DB_PORT=3306/g" .env
-  sed -i "s/DB_DATABASE=.*/DB_DATABASE=$MYSQL_DB/g" .env
-  sed -i "s/DB_USERNAME=.*/DB_USERNAME=$MYSQL_USER/g" .env
-  sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=$MYSQL_PASSWORD/g" .env
+  # Configure Database and Redis (Append to .env)
+  cat <<EOF >> .env
 
-  # Configure Redis caching
-  sed -i "s/CACHE_STORE=.*/CACHE_STORE=redis/g" .env
-  sed -i "s/SESSION_DRIVER=.*/SESSION_DRIVER=redis/g" .env
-  sed -i "s/QUEUE_CONNECTION=.*/QUEUE_CONNECTION=redis/g" .env
-  sed -i "s/REDIS_HOST=.*/REDIS_HOST=127.0.0.1/g" .env
+# Database Configuration
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=$MYSQL_DB
+DB_USERNAME=$MYSQL_USER
+DB_PASSWORD=$MYSQL_PASSWORD
+
+# Redis Configuration
+CACHE_STORE=redis
+CACHE_PREFIX=
+SESSION_DRIVER=redis
+SESSION_LIFETIME=120
+QUEUE_CONNECTION=redis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+EOF
 
   # Run database migrations
   php artisan migrate --seed --force
