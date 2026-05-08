@@ -26,13 +26,13 @@ List of supported installation setups for panel and Wings (installations support
 
 | Operating System | Version | Supported          | PHP Version |
 | ---------------- | ------- | ------------------ | ----------- |
-| Ubuntu           | 20.04   | :white_check_mark: | 8.3         |
-|                  | 22.04   | :white_check_mark: | 8.3         |
-|                  | 24.04   | :white_check_mark: | 8.3         |
-| Debian           | 11      | :white_check_mark: | 8.3         |
-|                  | 12      | :white_check_mark: | 8.3         |
-| Rocky Linux      | 9       | :white_check_mark: | 8.3         |
-| AlmaLinux        | 9       | :white_check_mark: | 8.3         |
+| Ubuntu           | 20.04   | :white_check_mark: | 8.5         |
+|                  | 22.04   | :white_check_mark: | 8.5         |
+|                  | 24.04   | :white_check_mark: | 8.5         |
+| Debian           | 11      | :white_check_mark: | 8.5         |
+|                  | 12      | :white_check_mark: | 8.5         |
+| Rocky Linux      | 9       | :white_check_mark: | 8.5         |
+| AlmaLinux        | 9       | :white_check_mark: | 8.5         |
 
 ## Using the installation scripts
 
