@@ -58,13 +58,29 @@ CONFIGURE_FIREWALL="${CONFIGURE_FIREWALL:-false}"
 
 # Must be assigned to work, no default values
 email="${email:-}"
+user_email="${user_email:-}"
+user_username="${user_username:-}"
+user_password="${user_password:-}"
 
 if [[ -z "${email}" ]]; then
   error "Email is required"
   exit 1
 fi
 
+if [[ -z "${user_email}" ]]; then
+  error "User email is required"
+  exit 1
+fi
 
+if [[ -z "${user_username}" ]]; then
+  error "User username is required"
+  exit 1
+fi
+
+if [[ -z "${user_password}" ]]; then
+  error "User password is required"
+  exit 1
+fi
 
 # --------- Main installation functions -------- #
 
@@ -105,6 +121,34 @@ configure() {
 
   # Generate .env file and APP_KEY automatically
   php artisan p:environment:setup
+
+  # Update environment variables to bypass Web Installer
+  sed -i "s@APP_URL=.*@APP_URL=$app_url@g" .env
+  sed -i "s/APP_INSTALLED=false/APP_INSTALLED=true/g" .env
+  sed -i "s/APP_ENV=local/APP_ENV=production/g" .env
+  
+  # Configure Database
+  sed -i "s/DB_HOST=.*/DB_HOST=127.0.0.1/g" .env
+  sed -i "s/DB_PORT=.*/DB_PORT=3306/g" .env
+  sed -i "s/DB_DATABASE=.*/DB_DATABASE=$MYSQL_DB/g" .env
+  sed -i "s/DB_USERNAME=.*/DB_USERNAME=$MYSQL_USER/g" .env
+  sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=$MYSQL_PASSWORD/g" .env
+
+  # Configure Redis caching
+  sed -i "s/CACHE_STORE=.*/CACHE_STORE=redis/g" .env
+  sed -i "s/SESSION_DRIVER=.*/SESSION_DRIVER=redis/g" .env
+  sed -i "s/QUEUE_CONNECTION=.*/QUEUE_CONNECTION=redis/g" .env
+  sed -i "s/REDIS_HOST=.*/REDIS_HOST=127.0.0.1/g" .env
+
+  # Run database migrations
+  php artisan migrate --seed --force
+
+  # Create admin user account
+  php artisan p:user:make \
+    --email="$user_email" \
+    --username="$user_username" \
+    --password="$user_password" \
+    --admin=1
 
   success "Configured environment!"
 }

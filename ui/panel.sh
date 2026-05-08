@@ -50,6 +50,11 @@ export MYSQL_PASSWORD=""
 export timezone=""
 export email=""
 
+# Initial admin account
+export user_email=""
+export user_username=""
+export user_password=""
+
 
 
 # Assume SSL, will fetch different config if true
@@ -148,6 +153,11 @@ main() {
 
   email_input email "Provide the email address that will be used to configure Let's Encrypt and Pelican: " "Email cannot be empty or invalid"
 
+  # Initial admin account
+  email_input user_email "Email address for the initial admin account: " "Email cannot be empty or invalid"
+  required_input user_username "Username for the initial admin account: " "Username cannot be empty"
+  password_input user_password "Password for the initial admin account: " "Password cannot be empty"
+
 
 
   print_brake 72
@@ -198,6 +208,9 @@ summary() {
   output "Database password: (censored)"
   output "Timezone: $timezone"
   output "Email: $email"
+  output "User email: $user_email"
+  output "Username: $user_username"
+  output "User password: (censored)"
   output "Hostname/FQDN: $FQDN"
   output "Configure Firewall? $CONFIGURE_FIREWALL"
   output "Configure Let's Encrypt? $CONFIGURE_LETSENCRYPT"
@@ -210,17 +223,9 @@ goodbye() {
   output "Panel installation completed"
   output ""
 
-  [ "$CONFIGURE_LETSENCRYPT" == true ] && output "Your panel should be accessible from $(hyperlink "https://$FQDN/installer")"
-  [ "$ASSUME_SSL" == true ] && [ "$CONFIGURE_LETSENCRYPT" == false ] && output "You have opted in to use SSL, but not via Let's Encrypt automatically. Your panel will not work until SSL has been configured. After configuring SSL, visit $(hyperlink "https://$FQDN/installer")"
-  [ "$ASSUME_SSL" == false ] && [ "$CONFIGURE_LETSENCRYPT" == false ] && output "Your panel should be accessible from $(hyperlink "http://$FQDN/installer")"
-
-  output ""
-  output "Database credentials (needed for web installer):"
-  output "Database Host: 127.0.0.1"
-  output "Database Port: 3306"
-  output "Database Name: $MYSQL_DB"
-  output "Database User: $MYSQL_USER"
-  output "Database Password: $MYSQL_PASSWORD"
+  [ "$CONFIGURE_LETSENCRYPT" == true ] && output "Your panel should be accessible from $(hyperlink "https://$FQDN")"
+  [ "$ASSUME_SSL" == true ] && [ "$CONFIGURE_LETSENCRYPT" == false ] && output "You have opted in to use SSL, but not via Let's Encrypt automatically. Your panel will not work until SSL has been configured."
+  [ "$ASSUME_SSL" == false ] && [ "$CONFIGURE_LETSENCRYPT" == false ] && output "Your panel should be accessible from $(hyperlink "http://$FQDN")"
 
   output ""
   output "Installation is using nginx on $OS"
