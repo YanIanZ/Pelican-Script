@@ -58,29 +58,13 @@ CONFIGURE_FIREWALL="${CONFIGURE_FIREWALL:-false}"
 
 # Must be assigned to work, no default values
 email="${email:-}"
-user_email="${user_email:-}"
-user_username="${user_username:-}"
-user_password="${user_password:-}"
 
 if [[ -z "${email}" ]]; then
   error "Email is required"
   exit 1
 fi
 
-if [[ -z "${user_email}" ]]; then
-  error "User email is required"
-  exit 1
-fi
 
-if [[ -z "${user_username}" ]]; then
-  error "User username is required"
-  exit 1
-fi
-
-if [[ -z "${user_password}" ]]; then
-  error "User password is required"
-  exit 1
-fi
 
 # --------- Main installation functions -------- #
 
